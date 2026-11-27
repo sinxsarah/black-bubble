@@ -62,7 +62,7 @@
 
   const frame = element(root, "div", { class: "frame" });
   const panel = element(frame, "section", { id: "panel", hidden: "", "aria-labelledby": "bubble-title" });
-  const build = globalThis.bubbleReplyVoice.extension?.getManifest().version || "0.3.16";
+  const build = globalThis.bubbleReplyVoice.extension?.getManifest().version || "0.3.17";
   const title = "Black Bubble " + build;
   element(panel, "h2", { id: "bubble-title" }, title);
   const startLoop = element(panel, "button", { type: "button", id: "start-loop" }, "Talk hands-free");
@@ -724,6 +724,8 @@
     owner.playback = globalThis.watchBubblePlayback({
       turn, samePage:() => current(owner),
       isViewGesture:event => {
+        // A press on Black Bubble's own call screen cannot change the page's playback.
+        if (event.type !== "keydown" && event.composedPath().includes(overlay)) return true;
         const activation = event.type !== "keydown" || ["Enter"," ","Tab"].includes(event.key);
         if (activation && event.composedPath().includes(resize)) return true;
         if (event.key === "Tab" && event.composedPath().includes(endLoop)) return true;
@@ -969,6 +971,10 @@
     navigationChanged();
     if (!inChat() || pending || call) return;
     const entries = transcript();
+    if (!entries.length && !chatRoute(location.pathname).id) {
+      setStatus("This button needs a chat that already has a message. In a new chat, use Talk hands-free.");
+      return;
+    }
     if (!entries.length || entries.some(entry => !entry.key) || isGenerating()) {
       setStatus("Wait for the current chat to finish loading or replying, then try again.");
       return;

@@ -9,10 +9,13 @@
   const choice = () => form.elements.source.value;
   const slot = source => "voice." + source;
   let preferences = {};
+  let pickedVoice = false;
   const say = message => { el("status").textContent = message; };
   function voices() {
     const list = el("installed");
-    const uri = list.value || preferences.deviceVoiceURI || "";
+    // Once the person has chosen from this list, an empty value means "Device default",
+    // and a refresh of the voice list must not swap the saved voice back in.
+    const uri = pickedVoice ? list.value : list.value || preferences.deviceVoiceURI || "";
     list.replaceChildren(new Option("Device default", ""));
     const local = (globalThis.speechSynthesis?.getVoices() || []).filter(v => v.localService === true);
     for (const v of local) list.add(new Option(v.name + " · " + v.lang, v.voiceURI));
@@ -61,6 +64,7 @@
     try { await task(); } catch (err) { say(err.message || "Could not save on this device."); }
   }
   el("choices").addEventListener("change", () => { draw(); say(""); });
+  el("installed").addEventListener("change", () => { pickedVoice = true; });
   el("save-key").addEventListener("click", () => action(async () => {
     const source = choice(), name = slot(source);
     if (!providers[source]) return;

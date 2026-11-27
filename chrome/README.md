@@ -1,4 +1,4 @@
-# Black Bubble 0.3.16 for Chrome
+# Black Bubble 0.3.17 for Chrome
 
 Black Bubble is an independent project. It isn’t made, approved or supported by OpenAI, ElevenLabs or Fish Audio.
 
@@ -6,7 +6,7 @@ Black Bubble is an independent project. It isn’t made, approved or supported b
 
 1. Type `chrome://extensions` into Chrome’s address bar and press Enter. Turn on **Developer mode** at the top right and leave it on. If you turn it off later, Chrome may switch the extension off.
 2. Click **Load unpacked** and choose the folder that contains `manifest.json`. If you downloaded a ZIP, unzip it first; the folder you want is the one named `chrome` inside it. Keep that folder on your computer.
-3. Refresh your ChatGPT tab. Look for **0.3.16** beside **Talk hands-free** in your new or existing chat. If you already loaded this same folder, click the reload arrow on its extension card first.
+3. Refresh your ChatGPT tab. Look for **0.3.17** beside **Talk hands-free** in your new or existing chat. If you already loaded this same folder, click the reload arrow on its extension card first.
 
 ## Talk
 

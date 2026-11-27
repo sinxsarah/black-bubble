@@ -11,9 +11,13 @@ Black Bubble is an independent project. It isn’t made, approved or supported b
 3. It watches for the completed reply to that question. With **ChatGPT’s own voice**, it uses the page’s **Read aloud** control. What you hear depends on the voice ChatGPT makes available. With **Device voice**, an installed voice reads the reply. There are also two paid options, described below.
 4. After playback, the microphone opens for your next question. Press the square stop button to end the call. If it pauses, the words under **Paused** tell you why.
 
-## Chrome 0.3.16
+## Chrome 0.3.17
 
-This desktop browser extension has been used in signed-in ChatGPT conversations in Chrome on one Windows computer, with a real microphone and speakers: long back-and-forth conversations on this build, and one spoken turn of about 400 words on the build before it. ChatGPT’s own voice, a device voice and ElevenLabs have each been heard working on this build. Fish Audio has not been tested by us yet. Nothing has been tried on other computers or other Chrome-family browsers yet.
+This desktop browser extension has been used in signed-in ChatGPT conversations in Chrome on one Windows computer, with a real microphone and speakers: long back-and-forth conversations on build 0.3.16, and one spoken turn of about 400 words on the build before that. ChatGPT’s own voice, a device voice and ElevenLabs have each been heard working on 0.3.16. Fish Audio has not been tested by us yet. Nothing has been tried on other computers or other Chrome-family browsers yet.
+
+Build 0.3.17 fixes four things found when the code was reviewed on the day 0.3.16 came out. A cough or a knock before your first word no longer ends the call. A tap on Black Bubble’s own call screen during playback no longer pauses the call when the reply ends. On a brand-new chat, the dictate button now tells you to use Talk hands-free. Choosing **Device default** in Voice settings now stays chosen. These four changes were checked by reading the code and by a short spoken test in Chrome on the same Windows computer: a normal turn, a cough before the first word, and a tap on the call screen during playback. They have not had a long conversation yet.
+
+One thing from that review is not fixed yet. In a small call, pressing ChatGPT’s own stop button while a reply is being read can make the reading start again. Use Black Bubble’s square stop button to end the reading.
 
 To install, click the green **Code** button on this page and choose **Download ZIP**. Unzip it and keep the `chrome` folder somewhere permanent. Type `chrome://extensions` into Chrome’s address bar and press Enter. Turn on **Developer mode** at the top right and leave it on. Click **Load unpacked** and choose the `chrome` folder, the one containing `manifest.json`. Refresh the ChatGPT tab. If you reload the extension later, refresh the tab again. If you turn Developer mode off, Chrome may switch the extension off.
 

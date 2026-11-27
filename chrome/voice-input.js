@@ -108,7 +108,9 @@
       };
       engine.onspeechend = () => {
         if (!live() || turn.finishing) return;
-        waitForQuiet(turn);
+        // Sound is not words here either. With no words heard yet the turn stays
+        // open, and the silence timer still ends an empty one.
+        if (turn.wordCount) waitForQuiet(turn);
       };
       engine.onresult = event => {
         if (!live()) return;

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Black Bubble",
-  "version": "0.3.16",
+  "version": "0.3.17",
   "description": "Talk and hear replies in your existing ChatGPT web conversation with a device voice, ChatGPT's own voice, ElevenLabs or Fish Audio.",
   "permissions": ["storage"],
   "host_permissions": ["https://api.elevenlabs.io/*", "https://api.fish.audio/*"],
