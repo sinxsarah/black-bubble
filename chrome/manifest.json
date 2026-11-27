@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Black Bubble",
+  "version": "0.3.16",
+  "description": "Talk and hear replies in your existing ChatGPT web conversation with a device voice, ChatGPT's own voice, ElevenLabs or Fish Audio.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.elevenlabs.io/*", "https://api.fish.audio/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_title": "Black Bubble voice settings"},
+  "options_page": "settings.html",
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["device-voice.js", "voice-input.js", "voice-playback.js", "reply-voice.js", "fonts/faces.js", "call-screen.js", "bubble.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
